@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/metricskafka
+    username: user
+    password: user
+    hikari:
+      schema: metricskafka
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS metricskafka
+      connection-timeout: 10000
+    driverClassName: org.postgresql.Driver
+
+
+server:
+  port: 8082
+
+
